@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene  mindar-image="imageTargetSrc: db/targets.mind; filterMinCF:0.0001; filterBeta: 0.001;" color-space="sRGB" crossorigin="anynomous" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img  crossorigin="anynomous" id="card" src="db/nazi.jpg"/>
+        <video autoplay id="vid" src="db/sabath.mp4"></video>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-video
+                src="#vid"
+                position='0 0 0'
+                scale="1 1 1"
+                >
+            </a-video>
+      </a-entity>
+    </a-scene>
+    
+    <script>
+
+  window.addEventListener("targetFound", function () {;
+      var videoElement = document.getElementById("vid"); 
+      videoElement.play();; 
+     });;
+      window.addEventListener("targetLost",function(){;
+      var videoElement = document.getElementById("vid");
+      videoElement.pause();;
+     });
+    </script>;
+    
+    
+      </script>
+    </style>
+  </body>
+</html>
